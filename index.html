@@ -54,9 +54,8 @@
                clone.querySelector(".demo-card__title").textContent = record["nat"] + " " + record["email"];
               
                clone.querySelector(".demo-card__subtitle").textContent = record["name"]["last"] + "," + record["name"]["first"] ;
-
-              
-              //clone.querySelector(".mdc-list-item__graphic.material-icons").textContent = icon;
+               clone.querySelector(".mdc-card__media").style.backgroundImage = "url("+record['picture']['large']+")";
+               clone.querySelector(".demo-card__subtitle").textContent = record["name"]["last"] + "," + record["name"]["first"] ;
 
 
               // append to list
