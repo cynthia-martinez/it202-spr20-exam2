@@ -6,6 +6,11 @@
     <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+      .demo-card__secondary{
+        white-space: pre-line;
+      }
+    </style>
   </head>
 
   <body>
@@ -20,7 +25,7 @@
       </div>
       <div class="mdc-card__actions">
         <div class="mdc-card__action-icons">          
-          <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="More options" data-mdc-ripple-is-unbounded="true">more_vert</button>
+          <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Get Photo" data-mdc-ripple-is-unbounded="true">person_pin</button>
         </div>
       </div>
     </div>
@@ -55,7 +60,16 @@
               
                clone.querySelector(".demo-card__subtitle").textContent = record["name"]["last"] + "," + record["name"]["first"] ;
                clone.querySelector(".mdc-card__media").style.backgroundImage = "url("+record['picture']['large']+")";
-               clone.querySelector(".demo-card__subtitle").textContent = record["name"]["last"] + "," + record["name"]["first"] ;
+              
+              let dob = record["dob"]["date"]
+              let dob_arr = dob.split("T")
+              
+              
+               clone.querySelector(".demo-card__secondary").textContent = record["id"]["name"] + "\r\n" + dob_arr[0] ;
+              
+              clone.querySelector("button").addEventListener('click', (e) =>{
+                window.open(record['picture']['medium'], "_blank");
+              });
 
 
               // append to list
