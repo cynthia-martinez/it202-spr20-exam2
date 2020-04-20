@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Exam 2</title>
+    <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+
+  <body>
+    <div class="mdc-card demo-card" id ="person-card">
+      <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+        <div class="mdc-card__media mdc-card__media--16-9 demo-card__media" style="background-image: url(&quot;https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg&quot;);"></div>
+        <div class="demo-card__primary">
+          <h2 class="demo-card__title mdc-typography mdc-typography--headline6">Our Changing Planet</h2>
+          <h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2">by Kurt Wagner</h3>
+        </div>
+        <div class="demo-card__secondary mdc-typography mdc-typography--body2">Visit ten places on our planet that are undergoing the biggest changes today.</div>
+      </div>
+      <div class="mdc-card__actions">
+        <div class="mdc-card__action-icons">          
+          <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="More options" data-mdc-ripple-is-unbounded="true">more_vert</button>
+        </div>
+      </div>
+    </div>
+  
+  </body>
+  <script>
+    let url = 'https://randomuser.me/api';
+    
+    fetch(url)
+           .then ( (response) => {
+             return response.json();
+           })
+           .then ( (json) => {
+             people = json['results']
+            
+            
+            for (let record of people) {
+
+              // clone template
+              let clone = document.querySelector("div#person-card").cloneNode(true);
+
+//               // remove template class from clone
+//               clone.classList.remove("template");
+
+//               // add attribute 
+//               clone.setAttribute("data-sr-number", record["sr_number"])
+
+              // update value
+              clone.querySelector("demo-card__title").textContent = record["nat"] + " " + record["email"];
+              
+              clone.querySelector("demo-card__subtitle").textContent = record["name"]["last"] + "," + record["name"]["first"] ;
+
+              
+              //clone.querySelector(".mdc-list-item__graphic.material-icons").textContent = icon;
+
+
+              // append to list
+
+              document.body.appendChild(clone);
+
+            }
+
+            
+
+
+           })
+  </script>
+  
+  
+
+</html>
