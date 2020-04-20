@@ -38,6 +38,8 @@
             
             
             for (let record of people) {
+              
+              console.log(record);
 
               // clone template
               let clone = document.querySelector("div#person-card").cloneNode(true);
@@ -49,9 +51,9 @@
 //               clone.setAttribute("data-sr-number", record["sr_number"])
 
               // update value
-              clone.querySelector("demo-card__title").textContent = record["nat"] + " " + record["email"];
+               clone.querySelector(".demo-card__title").textContent = record["nat"] + " " + record["email"];
               
-              clone.querySelector("demo-card__subtitle").textContent = record["name"]["last"] + "," + record["name"]["first"] ;
+               clone.querySelector(".demo-card__subtitle").textContent = record["name"]["last"] + "," + record["name"]["first"] ;
 
               
               //clone.querySelector(".mdc-list-item__graphic.material-icons").textContent = icon;
@@ -59,7 +61,7 @@
 
               // append to list
 
-              document.body.appendChild(clone);
+               document.body.appendChild(clone);
 
             }
 
